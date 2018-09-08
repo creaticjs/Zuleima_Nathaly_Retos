@@ -12,7 +12,7 @@
     <div class="container">       
       <div class="row">          
         <div class="col-md-6">
-           <h1>Perfil</h1>
+           <h1>Mi Perfil</h1>
             <div id="renderajax">
               <img id="avatar" src="" alt="">
               <h4 id="nombre"></h4>
@@ -21,32 +21,62 @@
               <p id="location"></p>
             </div>
         </div>
-      <div class="col-md-6">Hola</div>
+      <div class="col-md-6">
+           <pre id="repositorios">
+           <p id="id_event"></p>
+          
+          </pre>        
+      </div>
       <div class="row">
         <button onclick="getRequestGit()" type="button" class="btn btn-success">Traer datos</button>
       </div>
       </div>
     </div>
     <script>
-            var datosperfil={};
-            function getRequestGit(){
-                var peticion  = new  XMLHttpRequest();
-                peticion.onreadystatechange = function(){
-                    if (this.readyState == 4 && this.status == 200) {
-                        datosperfil = JSON.parse(this.responseText)
-                        document.getElementById('nombre').innerHTML = datosperfil.name
-                        document.getElementById('biografia').innerHTML = datosperfil.bio
-                        document.getElementById('company').innerHTML = datosperfil.company
-                        document.getElementById('location').innerHTML = datosperfil.location
-                        var imagen=document.getElementById('avatar');
-                        imagen.setAttribute('src',datosperfil.avatar_url)
-                        console.log(datosperfil);
+        var datosperfil={};
+        function getRequestGit(){
+           var peticion  = new  XMLHttpRequest();
+           peticion.onreadystatechange = function(){
+                if (this.readyState == 4 && this.status == 200) {
+                    datosperfil = JSON.parse(this.responseText)
+                    document.getElementById('nombre').innerHTML = datosperfil.name
+                    document.getElementById('biografia').innerHTML = datosperfil.bio
+                    document.getElementById('company').innerHTML = datosperfil.company
+                    document.getElementById('location').innerHTML = datosperfil.location
+                    var imagen=document.getElementById('avatar');
+                    imagen.setAttribute('src',datosperfil.avatar_url)
+                    console.log(datosperfil);
                         //document.getElementById("renderajax").innerHTML = this.responseText;
-                    }
-                }
+                    renderRepositorios(datosperfil.received_events_url);
+                 }
+              }
                 peticion.open('GET','https://api.github.com/users/ZuleimaHormigaG',true);
                 peticion.send();
+           }
+            document.addEventListener("DOMContentLoades", function(event){
+                console.log("Página cargada");
+                getRequestGit();
+    });
+        function renderRepositorios(url){
+            var data = [];
+            var req = new XMLHttpRequest();
+            req.onreadystatechange = function (){
+                if(this.readyState == 4 && this.status == 200){
+                    data = JSON.parse(this.responseText);
+                   // document.getElementById('repositorios').innerHTML = this.responseText;        
+
+                    data.forEach(element => {
+                        var nombre = element.type;
+                        document.getElementById('id_event').innerHTML = nombre;
+
+                        console.log(nombre);
+                    });
+                
+                 }
             }
-        </script>
+            req.open('GET', url, true)
+            req.send();
+        }
+    </script>
 </body>
 </html>
