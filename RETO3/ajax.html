@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">       
+      <div class="row">          
+        <div class="col-md-6">
+           <h1>Perfil</h1>
+            <div id="renderajax">
+              <img id="avatar" src="" alt="">
+              <h4 id="nombre"></h4>
+              <p id="biografia"></p>
+              <p id="company"></p>
+              <p id="location"></p>
+            </div>
+        </div>
+      <div class="col-md-6">Hola</div>
+      <div class="row">
+        <button onclick="getRequestGit()" type="button" class="btn btn-success">Traer datos</button>
+      </div>
+      </div>
+    </div>
+    <script>
+            var datosperfil={};
+            function getRequestGit(){
+                var peticion  = new  XMLHttpRequest();
+                peticion.onreadystatechange = function(){
+                    if (this.readyState == 4 && this.status == 200) {
+                        datosperfil = JSON.parse(this.responseText)
+                        document.getElementById('nombre').innerHTML = datosperfil.name
+                        document.getElementById('biografia').innerHTML = datosperfil.bio
+                        document.getElementById('company').innerHTML = datosperfil.company
+                        document.getElementById('location').innerHTML = datosperfil.location
+                        var imagen=document.getElementById('avatar');
+                        imagen.setAttribute('src',datosperfil.avatar_url)
+                        console.log(datosperfil);
+                        //document.getElementById("renderajax").innerHTML = this.responseText;
+                    }
+                }
+                peticion.open('GET','https://api.github.com/users/ZuleimaHormigaG',true);
+                peticion.send();
+            }
+        </script>
+</body>
+</html>
