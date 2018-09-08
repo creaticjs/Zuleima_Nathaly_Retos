@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="contenedor">
+        <p>EQUIPOS</p>
+    </div>
+    <table>
+        <tr>
+            <td>Nombre Equipo</td>
+            <td>Entrenador</td>
+        </tr>
+        <tbody id="cuerpoTabla">
+
+        </tbody>
+    </table>
+    <script>
+    var equipos = [
+            {
+                nombre: "Nacional",
+                urlImage: "https://seeklogo.com/images/C/Club_Atl__tico_Nacional-logo-B34D1C41B9-seeklogo.com.png",
+                dt: "Almidon",
+                jugadores: ["Dairo Moreno", "Omar Duarte", "Yerson Candelo"],
+                resenia: "Mejor conocido como Atlético Nacional",
+                estadio: "Atanasio Girardot",
+                estrellas:"20",
+                categoria:"A"
+            },
+            {
+                nombre: "America",
+                urlImage: "https://www.atlnacional.com.co/wp-content/uploads/2018/06/Escudo-del-Am%C3%A9rica-de-Cali.png",
+                dt: "Juan Carlos",
+                jugadores: ["Yoni Mosquera", "Diego Arboleda", "Jader Borja"],
+                resenia: "",
+                estadio: "",
+                estrellas:"10",
+                categoria:"A"
+            },
+            {
+                nombre: "Millonarios",
+                urlImage: "https://upload.wikimedia.org/wikipedia/commons/7/7d/Escudo_de_Millonarios_F%C3%BAtbol_Club.svg",
+                dt: "José Fernando",
+                jugadores: ["Totono", "Mackleny"],
+                resenia: "",
+                estadio: "",
+                estrellas:"15",
+                categoria:"A"
+            },   
+            {                       
+                nombre: "Tolima",
+                urlImageB: "https://seeklogo.com/images/D/Deportes_Tolima-logo-41FF63827C-seeklogo.com.png",
+                dtB: "Juan José",
+                jugadoresB: ["Andrés Cadavid", "Juan Guillermo", "Ayron del Valle"],
+                reseniaB: "",
+                estadio: "",
+                estrellas:"15",
+                categoria:"B"
+            }, 
+            {
+                nombre: "Medellin",
+                urlImage: "https://commons.wikimedia.org/wiki/File:Escudo_del_Deportivo_Independiente_Medell%C3%ADn.png",
+                dt: "Leonardo Gomez",
+                jugadores: ["David González", "Leonardo Fabio", "Ever Valencia"],
+                resenia: "",
+                estadio: "",
+                estrellas:"10",
+                categoria:"B"
+            }, {
+                nombre: "Pasto",
+                urlImage: "http://www.futbolcolombiano.com.co/wp-content/uploads/2015/12/EscudoDeportivoPasto.png",
+                dt: "David Solarte",
+                jugadores: ["Mauricio Casierra", "Julio Agustin", "Sebantian Villota"],
+                resenia: "",
+                estadio: "",
+                estrellas:"14",
+                categoria:"B"
+            }      
+        ];
+        var cont = document.getElementById('contenedor');
+        var cTable = document.getElementById('cuerpoTabla')
+        var auxE="";
+        var auxT="";
+        equipos.forEach(function(item, index){
+            console.log(item);
+            auxE += "<p>"+item.nombre+"</p>"
+        });
+        cont.innerHTML = auxE;
+
+        equipos.forEach(function(equipo, index){
+        auxT +="<tr><td>"+equipo.nombre+"</td><td>"+equipo.dt+"</td><tr>";
+        });
+        
+        class Robot {
+            //argumentos van dentro del constructor
+            constructor(nombre, energia){
+                this.nombre = nombre;
+                this.energia = energia
+            } 
+            //No necesitamos prototype
+            saludar(){
+                console.log(`Hola, soy ${this.nombre}`);
+            }             
+        }
+
+        cTable.innerHTML = auxT;
+    </script>
+</body>
+</html>
