@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+       #contenedor {
+        background-color:brown;
+        color:blue
+       }
+       .colorn {
+        background-color:brown;
+        color: bisque
+       } 
+       .colorn {
+        background-color:blueviolet;
+        color: chartreuse
+       }
+    </style>
+</head>
+<body>
+    <h1>jquery</h1>
+    <button id="saludo">Saludar</button>
+    <input type="text", name="nombre", placeholder="Nombre">
+    <input type="text", name="nombre", placeholder="email">
+    <ul>
+        <li>Colombia</li>
+        <li class="colorn">Mexico</li>
+        <li>Usa</li>
+        <li>Canada</li>
+    </ul>
+    <h1> Hola 2</h1>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script>
+      $(function(){
+         // CON CLICK
+
+        /* $('#saludo').click(function(){
+         $('#saludo').click(saludito);
+         });*/
+          $('#saludo').on('click', function(){
+              console.log('Evento ejecutado');
+          });
+      });
+      function saludito(e){
+          //console.log(e);
+          var elemt = $(this);
+          console.log(elemt.text());
+          alert("saludito");
+      }
+
+      //eventos delegados
+      
+    </script>
+</body>
+</html>

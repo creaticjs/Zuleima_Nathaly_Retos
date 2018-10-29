@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+       #contenedor {
+        background-color:brown;
+        color:blue
+       }
+       .colorn {
+        background-color:brown;
+        color: bisque
+       } 
+       .colorn {
+        background-color:blueviolet;
+        color: chartreuse
+       }
+    </style>
+</head>
+<body>
+    <h1>jQuery</h1>
+    <img src="https://tierracolombiana.org/wp-content/uploads/2016/09/bandera-de-colombia.jpg" id="loagind">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script>
+
+      $(function(){
+          peticion('https://swapi.co/api/species/1/')
+          .then(function(dat){
+              console.log(dat);
+          })
+          .catch(function(){
+              console.error("Error")
+          })
+      })
+      function peticion(url){
+          return new Promise(function(resolve, reject){
+            $.ajax({
+              type: "get",
+              url: url,
+              dataType: "json" 
+          })
+          .done(function(data){
+              console.log(data)
+          })
+          .fail(function(){
+              console.log("ERROR")
+          })
+          .always(function(){
+            console.log('Always')
+          });
+        });  
+      }
+      
+    </script>
+</body>
+</html>

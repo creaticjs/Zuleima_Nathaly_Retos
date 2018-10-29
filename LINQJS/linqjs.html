@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/linq.js/2.2.0.2/linq.min.js"></script>
+    
+    var daset = [
+        { id: 1, nombre: "Zuly Hormiga", edad: 20},
+        { id: 2, nombre: "Zuly", edad: 16},
+        { id: 3, nombre: "Zuly Hormiga", edad: 40},
+    ]
+    var busqueda = 'ZUL'
+    var query = Enumerable.From(daset)
+    .Where("$.edad < 30").ToArray();   
+    
+</body>
+</html>
